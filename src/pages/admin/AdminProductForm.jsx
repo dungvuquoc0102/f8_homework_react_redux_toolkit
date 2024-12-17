@@ -38,9 +38,11 @@ const AdminProductForm = () => {
   const handleProductForm = async (data) => {
     try {
       if (id) {
-        dispatch(editProduct(id, data));
+        console.log(data);
+        dispatch(editProduct({ id, product: data }));
         nav("/admin");
       } else {
+        console.log(data);
         dispatch(createProduct(data));
         confirm("Go to home?") && nav("/admin");
         reset();

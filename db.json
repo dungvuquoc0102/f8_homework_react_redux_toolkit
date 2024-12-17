@@ -1,11 +1,10 @@
 {
   "products": [
     {
-      "id": 1,
-      "title": "Product A ",
+      "title": "Product A U",
       "price": 100,
       "description": "Desc A",
-      "thumbnail": "https://picsum.photos/200/300.webp"
+      "id": 1
     },
     {
       "id": 2,
@@ -20,6 +19,18 @@
       "price": 300,
       "description": "Desc C",
       "thumbnail": "https://picsum.photos/200/300.webp"
+    },
+    {
+      "title": "Product 4",
+      "price": 100,
+      "description": "Desc 4",
+      "id": 4
+    },
+    {
+      "title": "Product 5",
+      "price": 100,
+      "description": "Desc 5",
+      "id": 5
     }
   ],
   "users": [

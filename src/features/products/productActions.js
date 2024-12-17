@@ -20,12 +20,14 @@ export const fetchProducts = createAsyncThunk(
 export const createProduct = createAsyncThunk(
   "products/createProduct",
   async (product) => {
+    console.log(product);
     return await addProduct(product);
   }
 );
 export const editProduct = createAsyncThunk(
   "products/editProduct",
-  async (id, product) => {
+  async ({ id, product }) => {
+    console.log(product);
     return await updateProduct(id, product);
   }
 );

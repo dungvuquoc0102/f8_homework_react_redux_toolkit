@@ -3,12 +3,12 @@ import {
   createProduct,
   editProduct,
   fetchProducts,
-  removeProduct
+  removeProduct,
 } from "./productActions";
 const initialState = {
   products: [],
   loading: false,
-  error: null
+  error: null,
 };
 const productSlide = createSlice({
   name: "products",
@@ -44,7 +44,7 @@ const productSlide = createSlice({
       .addCase(editProduct.fulfilled, (state, action) => {
         state.loading = false;
         state.products = state.products.map((item) =>
-          item.id === action.payload.id ? action.payload.id : item
+          item.id === action.payload.id ? action.payload : item
         );
       })
       .addCase(editProduct.rejected, (state, action) => {
@@ -64,6 +64,6 @@ const productSlide = createSlice({
         state.loading = false;
         state.error = action.payload || "Unknown error occurred";
       });
-  }
+  },
 });
 export const productReducer = productSlide.reducer;

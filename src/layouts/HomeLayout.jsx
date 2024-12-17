@@ -31,7 +31,7 @@ const HomeLayout = () => {
             </li>
           </ul>
         </nav>
-        {user.email && (
+        {user.email ? (
           <div>
             <span>Hello {user.email?.split("@")[0]}</span>
             <button
@@ -40,6 +40,13 @@ const HomeLayout = () => {
             >
               Logout
             </button>
+          </div>
+        ) : (
+          <div className="flex gap-3 items-center">
+            <Link to="/register">Register</Link>
+            <Link className="bg-green-500 p-2 rounded-md" to="/login">
+              Login
+            </Link>
           </div>
         )}
       </header>

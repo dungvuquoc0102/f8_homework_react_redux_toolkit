@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   createProduct,
-  editProduct
+  editProduct,
 } from "../../features/products/productActions";
 import { getProductById } from "../../services/productService";
 const AdminProductForm = () => {
@@ -15,9 +15,9 @@ const AdminProductForm = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors }
+    formState: { errors },
   } = useForm({
-    resolver: zodResolver(productSchema)
+    resolver: zodResolver(productSchema),
   });
   const dispatch = useDispatch();
   const nav = useNavigate();
@@ -35,7 +35,7 @@ const AdminProductForm = () => {
       }
     })();
   }, []);
-  const handleForm = async (data) => {
+  const handleProductForm = async (data) => {
     try {
       if (id) {
         dispatch(editProduct(id, data));
@@ -51,35 +51,48 @@ const AdminProductForm = () => {
   };
   //render
   return (
-    <div className="container mx-auto">
-      <h1>{id ? "Edit" : "Add"} product form</h1>
-      <form onSubmit={handleSubmit(handleForm)}>
-        <div>
+    <div className="mx-auto w-[500px] border rounded-md p-3 m-3">
+      <h1 className="text-center text-2xl mt-3">
+        {id ? "Update" : "Add"} product
+      </h1>
+      <form onSubmit={handleSubmit(handleProductForm)}>
+        <div className="flex flex-col gap-2">
           <label htmlFor="title">Title</label>
           <input
-            className="border"
             type="text"
-            name="title"
+            className="border rounded-md p-1"
             {...register("title")}
           />
           {errors.title && (
             <span className="text-red-500">{errors.title.message}</span>
           )}
         </div>
-        <div>
-          <label htmlFor="price">Price</label>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="price">price</label>
           <input
-            className="border"
-            type="text"
-            name="price"
+            type="number"
+            className="border rounded-md p-1"
             {...register("price", { valueAsNumber: true })}
           />
           {errors.price && (
             <span className="text-red-500">{errors.price.message}</span>
           )}
         </div>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="description">Description</label>
+          <input
+            type="text"
+            className="border rounded-md p-1"
+            {...register("description")}
+          />
+          {errors.description && (
+            <span className="text-red-500">{errors.description.message}</span>
+          )}
+        </div>
         <div>
-          <button>{id ? "Edit" : "Add"}</button>
+          <button className="p-2 bg-blue-500 rounded-md mt-3">
+            {id ? "Update" : "Add"}
+          </button>
         </div>
       </form>
     </div>

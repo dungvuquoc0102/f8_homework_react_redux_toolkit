@@ -1,4 +1,34 @@
 {
-  "products": [],
-  "users": []
+  "products": [
+    {
+      "id": 1,
+      "title": "Product A ",
+      "price": 100,
+      "description": "Desc A",
+      "thumbnail": "https://picsum.photos/200/300.webp"
+    },
+    {
+      "id": 2,
+      "title": "Sản phẩm B",
+      "price": 200,
+      "description": "Desc B",
+      "thumbnail": "https://picsum.photos/200/300.webp"
+    },
+    {
+      "id": 3,
+      "title": "Sản phẩm C",
+      "price": 300,
+      "description": "Desc C",
+      "thumbnail": "https://picsum.photos/200/300.webp"
+    }
+  ],
+  "users": [
+    {
+      "email": "dung1@gmail.com",
+      "password": "$2a$10$krJNoJbA2cdQvNQO8Opl7euaipI4I2LpG72kwIiYCLP7CN2g2aV/m",
+      "confirmPassword": "123456",
+      "role": "admin",
+      "id": 1
+    }
+  ]
 }

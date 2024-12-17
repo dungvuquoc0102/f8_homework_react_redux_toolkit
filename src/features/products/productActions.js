@@ -3,16 +3,17 @@ import {
   getAllProducts,
   addProduct,
   updateProduct,
-  deleteProduct
+  deleteProduct,
 } from "../../services/productService";
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
-  async (_, { rejectWithValue }) => {
+  async () => {
     try {
       return await getAllProducts();
     } catch (error) {
-      return rejectWithValue("error 01");
+      console.log(error);
+      // return rejectWithValue("error 01");
     }
   }
 );

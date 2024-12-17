@@ -10,8 +10,8 @@ const AdminLayout = () => {
   //   })();
   // }, []);
   return (
-    <div>
-      <header className="py-3 mx-auto container flex items-center justify-between">
+    <div className="">
+      <header className="py-3 mx-auto container flex items-center justify-between border-b">
         <Link to="/admin">react-redux + redux</Link>
         <nav>
           <ul className="flex gap-5">

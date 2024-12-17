@@ -11,13 +11,11 @@ const AdminProductList = () => {
   const dispatch = useDispatch();
   //ex
   useEffect(() => {
-    (async () => {
-      try {
-        dispatch(fetchProducts());
-      } catch (error) {
-        console.log(error);
-      }
-    })();
+    try {
+      dispatch(fetchProducts());
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
   const handleDelete = async (id) => {
     if (!confirm("Delete?")) return;

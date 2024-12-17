@@ -1,35 +1,37 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Navigate, NavLink, Outlet, useNavigate } from "react-router-dom";
 
 const AdminLayout = () => {
-  // const nav = useNavigate();
-  // const user = localStorage.getItem("user") || {};
-  // useEffect(() => {
-  //   (async () => {
-  //     if (!user.id) nav("/login");
-  //   })();
-  // }, []);
+  const nav = useNavigate();
+  const [user, setUser] = useState({});
+  useEffect(() => {
+    const localUser = JSON.parse(localStorage.getItem("user")) || {};
+    if (localUser.role !== "admin") {
+      nav("/");
+    } else {
+      setUser(localUser);
+    }
+  }, []);
+  function handleLogout() {
+    if (confirm("Logout?")) {
+      localStorage.setItem("user", "{}");
+      nav("/");
+    }
+  }
   return (
     <div className="">
-      <header className="py-3 mx-auto container flex items-center justify-between border-b">
-        <Link to="/admin">react-redux + redux</Link>
-        <nav>
-          <ul className="flex gap-5">
-            <li>
-              <NavLink to="/admin">Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="/product-add">Add Product</NavLink>
-            </li>
-          </ul>
-        </nav>
-        <div className="flex gap-5">
-          <div>
-            hello, <span>Dung</span>
-          </div>
-          <div>
-            <button>Logout</button>
-          </div>
+      <header className="container mx-auto border-b flex justify-between py-3 items-center">
+        <div>
+          <Link to="/admin">Admin logo</Link>
+        </div>
+        <div>
+          <span>Hello {user.email?.split("@")[0]}</span>
+          <button
+            className="p-2 bg-gray-500 rounded-md ml-2"
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
         </div>
       </header>
       <Outlet />

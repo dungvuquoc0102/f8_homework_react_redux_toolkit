@@ -101,7 +101,7 @@ const HomePage = () => {
                 src={item.thumbnail}
                 alt="img"
               />
-              <div className="text-xl">{item.title}</div>
+              <div className="text-xl line-clamp-1">{item.title}</div>
               <div className="text-gray-500">${item.price}</div>
               <button className="bg-green-500 p-2 rounded-md">
                 Show detail
@@ -117,7 +117,7 @@ const HomePage = () => {
                 src={item.thumbnail}
                 alt="img"
               />
-              <div>{item.title}</div>
+              <div className="line-clamp-1">{item.title}</div>
               <div className="text-gray-500">${item.price}</div>
               <button className="bg-green-500 p-2 rounded-md">
                 Show detail
